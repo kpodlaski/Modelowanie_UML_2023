@@ -1,0 +1,56 @@
+@startuml "usos usecase"
+actor Osoba
+actor Student
+actor "Pracownik dydaktyczny" as p_dyd
+actor Pracownik
+actor "Pracownik dziekanatu" as p_dz
+actor Dziekan 
+entity "Baza danych" as bd
+entity "Serwer WWW" as www
+
+Student -up-|> Osoba
+Pracownik <|-- p_dyd
+Pracownik <|-- p_dz
+Dziekan --|> Pracownik
+Pracownik --|> Osoba
+
+usecase "Wyszukiwanie listy zajęć" as w_zaj
+usecase "Wyszukiwanie studenta" as w_stud
+usecase "Sprawdzenie powiązań" as spr_pow
+usecase "Wyświetlenie" as wyswietlenie
+usecase "Podgląd planu zajęć" as plan_zaj
+usecase "Zapisy online" as zapisy_online
+usecase "Zapisy na zajęcia" as zapisy
+usecase "Zapisy offline" as zapisy_offline
+usecase "Zaliczanie semestru" as zaliczanie_sem
+usecase "Wystawianie ocen" as wyst_ocen
+usecase "Wydruk suplementu" as wyd_sup
+
+Student -- zapisy
+Student -- plan_zaj
+Student -- wyst_ocen
+p_dyd -- wyst_ocen
+p_dyd -- plan_zaj
+p_dz -- wyst_ocen
+p_dz -- zaliczanie_sem
+p_dz -- wyd_sup
+p_dz -- plan_zaj
+Dziekan -- zaliczanie_sem
+bd -- w_zaj
+bd -- w_stud
+bd -- spr_pow
+www -- wyswietlenie
+
+zapisy_online --|> zapisy
+zapisy_offline --|> zapisy
+plan_zaj --> w_zaj : <<include>>
+plan_zaj --> w_stud : <<include>>
+plan_zaj --> spr_pow : <<include>>
+w_zaj --> w_stud : <<invoke>>
+w_stud --> spr_pow : <<invoke>>
+spr_pow --> wyswietlenie : <<invoke>>
+
+
+
+
+@enduml

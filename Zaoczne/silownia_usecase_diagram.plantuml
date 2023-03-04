@@ -1,0 +1,46 @@
+@startuml silownia_usecase
+
+actor Pracownik
+actor "Właściciel" as Wlasciciel
+actor Trener 
+actor "Obsługa" as Obsluga
+actor Klient
+
+Wlasciciel --|> Pracownik
+Trener --|> Pracownik
+Obsluga --|> Pracownik
+
+usecase (Opłata karnetu) as karnet
+usecase (Obsługa klienta) as obs_klienta
+usecase (Sprawdzenie statusu klienta) as spr_statusu
+usecase (Tworzenie grup zajęćiowych) as tw_grup
+usecase (Zapisy na zajęcia) as zapisy
+usecase (Zgłaszanie awarii) as awaria
+usecase (Trening personalny) as tr_pers
+usecase (Trening grupowy) as tr_grp
+usecase (Sprawozdawczość) as sprawozdawczosc
+usecase (Dostęp sqobodny) as dost_swob
+usecase (Doradztwo) as doradztwo
+
+Wlasciciel -- sprawozdawczosc
+Obsluga -- awaria
+Obsluga -- obs_klienta
+Trener -- awaria
+Trener -- doradztwo
+Trener -- tr_pers
+Trener -- tr_grp
+Pracownik -- tw_grup
+Pracownik -- zapisy
+
+Klient -- karnet
+Klient --spr_statusu
+Klient -- zapisy
+Klient -- tr_grp
+Klient -- tr_pers
+Klient -- dost_swob
+Klient -- doradztwo
+
+zapisy --> tw_grup : <<requires>>
+ 
+
+@enduml

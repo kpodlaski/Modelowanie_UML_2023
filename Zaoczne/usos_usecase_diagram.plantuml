@@ -1,0 +1,38 @@
+@startuml "usos_usecase_diagram"
+
+actor Osoba
+actor Pracownik
+actor "Prac. dydaktyczny" as wykladowca
+actor "Prac. dziekanatu" as dziekanat
+actor Dziekan
+actor Student
+
+usecase (Zaliczenie semestru) as zs
+usecase "Zapisy na zajęcia" as zapisy
+usecase "Wyliczanie średniej" as srednia
+usecase "Wystawianie/Podgląd ocen" as oceny
+usecase "Składanie wniosków" as wnioski
+usecase "Składanie wniosków o stypendia" as stypendia
+usecase "Składanie wniosków o urlop" as urlop
+
+Pracownik -up-|> Osoba
+dziekanat -up-|> Pracownik
+wykladowca -up-|> Pracownik
+Dziekan -up-|> Pracownik
+Student -up-|> Osoba 
+
+dziekanat -- oceny
+dziekanat -- srednia
+dziekanat -- wnioski
+dziekanat -- zs
+Dziekan -- zs
+Dziekan -- wnioski
+wykladowca -- oceny
+Student -- oceny
+Student -- wnioski
+Student -- zapisy
+urlop -up-|> wnioski
+stypendia -up-|> wnioski 
+srednia --> oceny : <<include>>
+
+@enduml
