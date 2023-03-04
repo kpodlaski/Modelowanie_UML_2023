@@ -1,0 +1,54 @@
+@startuml
+
+class Osoba
+{
+    Imie : String, 
+    Nazwisko: String,
+    Pesel : String
+}
+class Pracownik{
+    IdPracownika: Number
+}
+class Dziekan{
+    decyzja(Wniosek)
+}
+class PracownikDydaktyczny
+class PracownikDziekanatu
+class Student{
+    IdStudenta: Number
+    'Pole przedmiot jest teraz reprezentowane przez kompozycję (linię na diagramie)
+    'przedmioty : Przedmiot[]
+}
+
+class Przedmiot{
+    Nazwa:String
+    'Pole student jest teraz reprezentowane przez linię na diagramie
+    'student: Student
+    ocena: Number
+    'prowadzacy: PracownikDydaktyczny
+    semestr: Number
+}
+
+class Wniosek{
+    typ
+    czyZaakceptowano
+}
+
+class Zapisy{
+    NazwaPrzedmiotu:String
+}
+
+Pracownik --|> Osoba
+Student --|> Osoba
+Dziekan --|> Pracownik
+PracownikDydaktyczny --|> Pracownik
+PracownikDziekanatu --|> Pracownik 
+Student "przedmioty" *-- "student" Przedmiot 
+PracownikDydaktyczny "przedmioty" *-- "prowadzacy" Przedmiot
+PracownikDziekanatu "studenci" *-- Student
+PracownikDziekanatu "dziekan" -- Dziekan
+Wniosek --* "wnioski" Student
+Wniosek --* "wniski do rozpatrzenia" PracownikDziekanatu
+Student --* "zapisani" Zapisy
+
+@enduml
