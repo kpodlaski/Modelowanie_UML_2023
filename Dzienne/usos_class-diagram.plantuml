@@ -1,0 +1,43 @@
+@startuml
+
+class Osoba{
+    Imie 
+    Nazwisko
+    Pesel
+}
+class Student{
+    NrStudenta
+}
+class Pracownik{
+    IDPracownika
+}
+class PracownikDydaktyczny
+class PracownikDziekanatu 
+class Dziekan 
+
+class Przedmiot{
+    Kod
+    Nazwa
+}
+class Zajecia{
+    RokAkad
+    Semestr
+    'Zastąpione linią
+    'Przedmiot : Przedmiot
+}
+
+class Wpis{
+    Ocena
+}
+
+Student --|> Osoba 
+Osoba <|-- Pracownik
+PracownikDziekanatu --|> Pracownik
+PracownikDydaktyczny --|> Pracownik
+Dziekan --|> Pracownik
+
+Wpis "Student" --o "Oceny" Student
+Zajecia "Przedmiot" -- Przedmiot
+Zajecia --left-- "Przedmiot" Wpis
+
+@enduml
