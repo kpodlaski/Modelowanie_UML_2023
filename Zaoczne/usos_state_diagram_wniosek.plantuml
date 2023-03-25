@@ -1,0 +1,19 @@
+@startuml
+[*] --> PustyWniosek 
+PustyWniosek: jest pusty
+PustyWniosek --> Wniosek : Student wypełnił wniosek 
+Wniosek: wypełniony
+Wniosek: nie zaakceptowany
+Wniosek --> WniosekUDziekana : akceptacja przez Dziekanat
+WniosekUDziekana: wypełniony
+WniosekUDziekana: nie zaakceptowany
+Wniosek --> PustyWniosek : do poprawy
+WniosekUDziekana --> ZaakceptowanyWniosek : akceptacja Dziekana
+ZaakceptowanyWniosek : wypełniony
+ZaakceptowanyWniosek : zaakceptowany
+WniosekUDziekana --> OdrzuconyWniosek : brak akceptacji Dziekana
+OdrzuconyWniosek: wypełniony
+OdrzuconyWniosek: odrzucony
+OdrzuconyWniosek --> [*]
+ZaakceptowanyWniosek --> [*]
+@enduml
