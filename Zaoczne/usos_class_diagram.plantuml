@@ -43,7 +43,7 @@ Student --|> Osoba
 Dziekan --|> Pracownik
 PracownikDydaktyczny --|> Pracownik
 PracownikDziekanatu --|> Pracownik 
-Student "przedmioty" *-- "student" Przedmiot 
+Student "przedmioty" *--* "studenci" Przedmiot 
 PracownikDydaktyczny "przedmioty" *-- "prowadzacy" Przedmiot
 PracownikDziekanatu "studenci" *-- Student
 PracownikDziekanatu "dziekan" -- Dziekan

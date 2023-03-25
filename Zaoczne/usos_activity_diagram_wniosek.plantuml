@@ -1,0 +1,29 @@
+@startuml
+(*) -> "Student wypełnia wniosek" 
+--> "Student dostarcza wniosek do dziekanatu"
+--> "Analiza formalna wniosku" as Analiza
+if "wniosek jest poprawny"
+   --> [Tak] "Przekazanie wniosku do Dziekana" as Decyzja
+else
+    --> [Nie] if "poprawiamy wniosek" 
+        --> [Tak] "Poprawienie wniosku prze studenta"
+            --> Analiza
+        else 
+            --> [Nie] (*)
+    endif
+endif
+Decyzja --> if "akceptacja"
+    --> [Tak] "Zmiana statusu wniosku na zaakceptowany"
+    --> "Przekazanie do dziekanatu" as pDziek2
+    else 
+    --> [Nie] "Zmiana statusu wniosku na niezaakceptowany"
+    --> pDziek2
+    endif
+pDziek2 --> ===DokumentyStart===
+--> "Aktualizacja systemów elektronicznych"
+--> ===DokumentyEnd===
+===DokumentyStart=== --> "Aktualizacja dokumentacji papierowej"
+--> ===DokumentyEnd===
+--> "Przekazanie odpowiedzi studentowi"
+-->(*)
+@enduml
