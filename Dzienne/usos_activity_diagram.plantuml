@@ -1,0 +1,26 @@
+@startuml
+
+(*) --> "Prowadzenie zajęć"
+--> "Ustalenie warunków \nprojektu końcowego"
+--> "Ustalenie tematu \nprojektów studetów"
+--> "Przygotowanie projektu" as przygotowanie
+--> "Przesłanie projektu do prowadzącego"
+--> "Wstępna analiza projektu"
+--> if "wersja jest akceptowalna"
+    --> [Tak] ===P1===
+    --> "Ustalenie terminu rozmowy"
+    --> ===P2===
+    ===P1=== --> "Przygotowanie do zaliczenia"
+    --> ===P2===
+    --> "Rozmowa zalieczeniowa"
+    --> if "odpowiedź satysfakcjonująca"
+            --> [Tak] "Wystawienie oceny pozytywnej"
+            --> (*)
+        else 
+            --> [Nie] "Wystawienie oceny negatywnej"
+            --> (*)
+        endif 
+    else 
+    --> [Nie] przygotowanie
+    endif
+@enduml
