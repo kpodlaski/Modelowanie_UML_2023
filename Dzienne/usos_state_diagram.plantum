@@ -1,0 +1,19 @@
+@startuml
+[*] --> Zajęcia
+Zajęcia : brak oceny z przedmiotu
+Zajęcia : zajęcia odbywają sie zgodnie z planem
+Zajęcia --> Przygotowanie : Semestr zakończył się
+Przygotowanie : brak oceny z przedmiotu
+Przygotowanie : projekt zaliczeniowy w trakcie realizacji
+Przygotowanie --> Zaliczenie : zakończono projekt
+Zaliczenie : brak oceny z przedmiotu
+Zaliczenie : ustalony termin zaliczenia
+Zaliczenie --> OcenaWystawiona : ocena pozytywna
+OcenaWystawiona : ocena pozytywna z przedmiotu
+OcenaWystawiona --> [*]
+Zaliczenie --> Przygotowanie : projekt do poprawy
+Zaliczenie --> NegatywnaOcena : ocena negatywna
+NegatywnaOcena : ocena negatywna z przedmiotu
+NegatywnaOcena --> [*]
+
+@enduml
