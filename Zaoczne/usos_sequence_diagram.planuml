@@ -1,0 +1,25 @@
+@startuml
+
+Student -> Dziekanat : Oddanie wniosku
+activate Dziekanat
+Dziekanat -> Dziekanat : Wykonaj analizę formalną
+activate Dziekanat
+return
+Dziekanat -> Dziekan : Prośba o akceptację
+activate Dziekan
+alt Wniosek_zaakceptowano
+Dziekan -> Dziekanat :akceptacja
+' return akceptacja
+deactivate Dziekan
+
+Dziekanat -> Dziekanat : aktualizacja dokumentacji
+Dziekanat -> Student : Akceptacja wniosku
+else Brak Akceptacji wniosku
+activate Dziekan
+Dziekan -> Dziekanat :brak zgody
+deactivate Dziekan
+Dziekanat -> Dziekanat : aktualizacja dokumentacji
+Dziekanat -> Student : Informacja o braku zgody 
+deactivate Dziekanat
+end
+@enduml
