@@ -1,0 +1,28 @@
+@startuml
+'Proces wystawienia oceny
+'input: obiekt Przedmiot, obiekt Student, double ocena
+(*) --> "Następne Zajęcia z listy \n zajęć pracownika" as next
+if Zajecia.przedmiot == Przedmiot
+-left-> [False] next
+else 
+-left-> [Nie ma pasującego Przemiotu] "return false"
+--> (*)
+else
+--> [True] "Wybrano zajęcia"
+endif
+
+--> "Następa osoba z listy \n studentów" as next2
+if osoba == Student
+-left-> [False] next2
+else 
+-left-> [Nie ma pasującego Studenta] "return false"
+else 
+-right-> [True] "Wybrano studenta"
+endif
+-up-> "Stwórz nowy obiek Wpis w obiekcie zajęcia"
+-up-> "Dodaj wpis do obiektu Student"
+-up-> "Dodaj Wpis do listy wpisów w Zajecia"
+-up-> "return True"
+-up-> (*)
+
+@enduml

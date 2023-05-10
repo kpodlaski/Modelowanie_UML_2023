@@ -11,7 +11,9 @@ class Student{
 class Pracownik{
     IDPracownika
 }
-class PracownikDydaktyczny
+class PracownikDydaktyczny{
+    wystawOcene(Przedmiot, Student, Ocena):bool
+}
 class PracownikDziekanatu 
 class Dziekan 
 
@@ -24,6 +26,7 @@ class Zajecia{
     Semestr
     'Zastąpione linią
     'Przedmiot : Przedmiot
+    listaStucentow() : Student[]
 }
 
 class Wpis{
@@ -39,5 +42,8 @@ Dziekan --|> Pracownik
 Wpis "Student" --o "Oceny" Student
 Zajecia "Przedmiot" -- Przedmiot
 Zajecia --left-- "Przedmiot" Wpis
+Zajecia "Prowadzacy" --o PracownikDydaktyczny
+Zajecia "Studenci" o-- Student
+
 
 @enduml
