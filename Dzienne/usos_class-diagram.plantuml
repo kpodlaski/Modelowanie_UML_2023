@@ -41,7 +41,7 @@ Dziekan --|> Pracownik
 
 Wpis "Student" --o "Oceny" Student
 Zajecia "Przedmiot" -- Przedmiot
-Zajecia --left-- "Przedmiot" Wpis
+Zajecia "Wpisy" o--left-- "Przedmiot" Wpis
 Zajecia "Prowadzacy" --o PracownikDydaktyczny
 Zajecia "Studenci" o-- Student
 
