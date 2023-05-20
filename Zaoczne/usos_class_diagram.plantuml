@@ -24,9 +24,12 @@ class Przedmiot{
     Nazwa:String
     'Pole student jest teraz reprezentowane przez linię na diagramie
     'student: Student
-    ocena: Number
     'prowadzacy: PracownikDydaktyczny
     semestr: Number
+}
+
+class Wpis {
+    ocena: Number
 }
 
 class Wniosek{
@@ -50,5 +53,6 @@ PracownikDziekanatu "dziekan" -- Dziekan
 Wniosek --* "wnioski" Student
 Wniosek --* "wniski do rozpatrzenia" PracownikDziekanatu
 Student --* "zapisani" Zapisy
-
+Przedmiot *-- Wpis
+Student -- Wpis
 @enduml
