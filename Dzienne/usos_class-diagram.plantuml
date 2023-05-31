@@ -23,10 +23,6 @@ class PracownikDydaktyczny{
 class PracownikDziekanatu 
 class Dziekan 
 
-class Przedmiot{
-    Kod
-    Nazwa
-}
 class Zajecia{
     RokAkad
     Semestr
@@ -35,16 +31,21 @@ class Zajecia{
     listaStucentow() : Student[]
 }
 
+class Przedmiot{
+    Kod
+    Nazwa
+}
+
 class Wpis{
     Ocena
 }
 
 Student --|> Osoba 
 Osoba <|-- Pracownik
-PracownikDziekanatu --|> Pracownik
+PracownikDziekanatu -up-|> Pracownik
 PracownikDydaktyczny --|> Pracownik
-Dziekan --|> Pracownik
-PracownikDydaktyczny -up- DB
+Dziekan -left-|> Pracownik
+Pracownik -up- DB
 
 Wpis "Student" --o "Oceny" Student
 Zajecia "Przedmiot" -- Przedmiot
