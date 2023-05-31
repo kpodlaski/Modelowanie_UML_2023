@@ -1,5 +1,11 @@
 @startuml
 
+class DB{
+    znajdzZajecia(Przedmiot, Student):Zajecia
+    aktualizujZajecia(Zajecia)
+    dodajWpis(Wpis)
+}
+
 class Osoba{
     Imie 
     Nazwisko
@@ -38,12 +44,15 @@ Osoba <|-- Pracownik
 PracownikDziekanatu --|> Pracownik
 PracownikDydaktyczny --|> Pracownik
 Dziekan --|> Pracownik
+PracownikDydaktyczny -up- DB
 
 Wpis "Student" --o "Oceny" Student
 Zajecia "Przedmiot" -- Przedmiot
 Zajecia "Wpisy" o--left-- "Przedmiot" Wpis
-Zajecia "Prowadzacy" --o PracownikDydaktyczny
-Zajecia "Studenci" o-- Student
+
+'Powiązanie jest w relacji bazodanowej natomiast nie jest reprezentowane w klasach
+'Zajecia "Prowadzacy" --o PracownikDydaktyczny
+Zajecia "Studenci" o--o Student
 
 
 @enduml
